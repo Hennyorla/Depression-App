@@ -1,0 +1,18 @@
+.profile_container {
+  height: 100vh;
+}
+
+.profile_options {
+  background-color: brown;
+  height: 100vh;
+  padding-top: 50px;
+}
+
+.profile_options a {
+  width: 100%;
+  text-align: left !important;
+}
+
+.profile_content {
+  height: 100vh;
+}

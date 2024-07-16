@@ -11,19 +11,13 @@ const apply = async ({ professionalData }) => {
 const createProfessional = async (userId) => {
   const user = await findUserById(userId);
 
-  if (user) {
-    const professionalData = {
-      user: user._id,
-    };
-    const professional = new Professional(professionalData);
-    await professional.save();
+  const professionData = {
+    user: user._id,
+  };
 
-    if (professional) {
-      user.role = "professional";
-      await user.save();
-      return professional;
-    }
-  }
+  const professional = new Professional(professionalData);
+  await professional.save();
+  return professional;
 };
 
 const getProfessional = async (professionalId) => {
@@ -34,8 +28,15 @@ const getProfessional = async (professionalId) => {
   return professional;
 };
 
-const getProfessionals = async () => {
-  const professionals = await Professional.find({}).populate(
+const getProfessionals = async (filters) => {
+  const query = {};
+  if (filters.specialties) {
+    query.specialties = { $in: filters.specialties.split(",") };
+  }
+  if (filters.availability) {
+    query.availability = filters.availability;
+  }
+  const professionals = await Professional.find(query).populate(
     "user",
     "name email"
   );
@@ -62,4 +63,5 @@ module.exports = {
   getProfessionals,
   updateProfessional,
   deleteProfessional,
+  apply,
 };
