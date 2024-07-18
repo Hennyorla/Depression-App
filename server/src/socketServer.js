@@ -6,7 +6,7 @@ const {
 } = require("./utils/chathelpers");
 const messageFormat = require("./utils/messageFormat");
 const runConversation = require("./utils/gpt");
-const { profanityFilter } = require("./utils/ProfanityFilter");
+const { profanityFilter } = require("./utils/profanityFilter");
 
 const listen = async (io) => {
   const bot = { name: "T-AI" };
