@@ -3,7 +3,7 @@ const {
   getCurrentUser,
   userLeave,
   getRoomUsers,
-} = require("./utils/chatHelpers");
+} = require("./utils/chathelpers");
 const messageFormat = require("./utils/messageFormat");
 const runConversation = require("./utils/gpt");
 const { profanityFilter } = require("./utils/ProfanityFilter");
