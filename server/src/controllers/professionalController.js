@@ -3,6 +3,7 @@ const { apply, allApplications } = require("../services/professionalServices");
 
 const applyForProffessional = async (req, res) => {
   const { userId } = req.user;
+
   const cv = "uploads/" + req.file.filename;
   const { specialities, experience, summary } = req.body;
   try {

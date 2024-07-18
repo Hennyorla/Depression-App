@@ -10,6 +10,8 @@ const Professionals = () => {
     getAllProfessionals();
   }, []);
 
+  console.log(data);
+
   return (
     <>
       <section

@@ -25,11 +25,12 @@ const allApplications = async () => {
 
 const createProfessional = async (userId) => {
   const user = await ProfessionalApplication.findOne({ user: userId });
+
   const userInfo = await findUserById(userId);
 
   if (user) {
     const professionalData = {
-      user: userId,
+      user: userInfo._id,
       cv: user.cv,
       experience: user.experience,
       specialties: user?.specialties,
@@ -62,7 +63,6 @@ const getProfessionals = async () => {
     .populate("user", "firstName lastName email profilePicture")
     .exec();
 
-  console.log(professionals);
   return professionals;
 };
 

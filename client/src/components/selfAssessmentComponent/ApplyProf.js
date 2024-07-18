@@ -69,6 +69,8 @@ const ApplyProf = () => {
     }
   }, [isSuccess]);
 
+  console.log(error);
+
   return (
     <div className="container" style={{ marginTop: "100px" }}>
       <div className="row">
@@ -120,7 +122,7 @@ const ApplyProf = () => {
                 <textarea
                   className="form-control"
                   onChange={(event) => setSummary(event.target.value)}
-                  rows={10}
+                  rows={5}
                   cols={10}
                 ></textarea>
               </div>
@@ -131,7 +133,7 @@ const ApplyProf = () => {
                   type="submit"
                   style={{ width: "100%" }}
                 >
-                  Register
+                  {isLoading ? "Please wait..." : "Register"}
                 </button>
               </div>
             </form>

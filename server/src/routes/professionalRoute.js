@@ -6,17 +6,17 @@ const { checkUserIsAdmin } = require("../middlewares/authorization");
 const upload = require("../utils/multer");
 
 router.post(
-  "/:id",
-  requireSignin,
-  checkUserIsAdmin,
-  professionalController.createProfessional
-);
-
-router.post(
   "/apply",
   requireSignin,
   upload.single("cv"),
   professionalController.applyForProffessional
+);
+
+router.post(
+  "/:id",
+  requireSignin,
+  checkUserIsAdmin,
+  professionalController.createProfessional
 );
 
 router.get(

@@ -1,4 +1,32 @@
+import { useState, useEffect } from "react";
+import { useCreateSessionMutation } from "../../lib/APIS/sessionApi/sessionApis";
+import ErrorMessage from "../UI/ErrorMessage";
+
 const AppointmentFormModal = ({ id }) => {
+  const [sessionDate, setSessionDate] = useState("");
+  const [note, setNote] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [createSession, { isSuccess, isError, error, isLoading }] =
+    useCreateSessionMutation();
+
+  const createSessionHandler = async (event) => {
+    event.preventDefault();
+
+    if (!note || !sessionDate) {
+      return setErrorMessage("All fields are required");
+    }
+
+    await createSession({ note, sessionDate, professionalId: id });
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      setNote("");
+      setSessionDate("");
+    }
+  }, [isSuccess]);
+
   return (
     <div
       className="modal fade"
@@ -27,22 +55,35 @@ const AppointmentFormModal = ({ id }) => {
                   <span> Do you want </span> to book an Appointment?
                 </h2>
                 <p> Fill the form to book an Appointment</p>
+
+                {isError && (
+                  <ErrorMessage
+                    message={
+                      error?.data?.error ||
+                      error?.error ||
+                      "something went wrong"
+                    }
+                  />
+                )}
+
+                {errorMessage && <ErrorMessage message={errorMessage} />}
               </div>
-              <form>
+              <form onSubmit={createSessionHandler}>
                 <div className="form-group">
                   <input
                     className="form-control"
                     type="Date"
                     placeholder="Appointment Date"
+                    onChange={(event) => setSessionDate(event.target.value)}
                   />
                 </div>
 
                 <div className="form-group">
-                  <input
+                  <textarea
+                    onChange={(event) => setNote(event.target.value)}
                     className="form-control"
-                    type="String"
-                    placeholder="Additional Notes"
-                  />
+                    placeholder="Additional Note"
+                  ></textarea>
                 </div>
 
                 <div className="form-group mb-0">
@@ -51,7 +92,7 @@ const AppointmentFormModal = ({ id }) => {
                     type="submit"
                     style={{ width: "100%" }}
                   >
-                    Book an Appointment
+                    {isLoading ? "Please wait..." : " Book an Appointment"}
                   </button>
                 </div>
               </form>

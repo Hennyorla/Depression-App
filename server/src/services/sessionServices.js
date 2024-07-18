@@ -8,6 +8,9 @@ const { calculateHourDifference } = require("../utils/session");
 const createSession = async (sessionData) => {
   const session = new Session(sessionData);
   await session.save();
+
+  if (session) {
+  }
   return session;
 };
 
@@ -15,7 +18,7 @@ const getSession = async (sessionId) => {
   const session = await Session.findById(sessionId)
     .populate("user", "firstName lastName email profilePicture")
     .populate({
-      path: "profesional",
+      path: "professional",
       populate: {
         path: "user",
         select: "_id email firstName lastName profilePicture",
@@ -25,17 +28,17 @@ const getSession = async (sessionId) => {
   return session;
 };
 
-const getSessions = async () => {
+const getSessions = async (userId) => {
   const sessions = await Session.find({})
     .populate("user", "firstName lastName email profilePicture")
     .populate({
-      path: "profesional",
+      path: "professional",
       populate: {
         path: "user",
-        select: "_id email firstName lastName profilePicture",
+        select: "email firstName lastName",
       },
-    })
-    .exec();
+    });
+
   return sessions;
 };
 

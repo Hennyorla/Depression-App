@@ -12,7 +12,7 @@ const sessionSchema = new Schema(
     },
     professional: {
       type: Schema.Types.ObjectId,
-      ref: "Professional",
+      ref: "professional",
       required: true,
     },
     sessionDate: {
