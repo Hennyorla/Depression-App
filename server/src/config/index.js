@@ -22,4 +22,5 @@ module.exports = {
   RAPID_API_KEY: process.env.RAPID_API_KEY,
   RAPID_API_HOST: process.env.RAPID_API_HOST,
   FILTER_URL: process.env.FILTER_URL,
+  CLIENT_URL: process.env.CLIENT_URL,
 };

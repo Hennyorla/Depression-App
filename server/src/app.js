@@ -7,12 +7,13 @@ const authRoutes = require("./routes/authRoutes");
 const professionalRoute = require("./routes/professionalRoute");
 const sessionRoutes = require("./routes/sessionRoute");
 const resourceRoutes = require("./routes/resourseRoutes");
+const { CLIENT_URL } = require("./config/index");
 const app = express();
 
 //global middleware configuration
 
 const corsOptions = {
-  origin: ["http://localhost:3000"],
+  origin: [CLIENT_URL],
   optionsSuccessStatus: 200,
   credentials: true,
 };
