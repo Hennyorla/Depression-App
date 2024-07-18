@@ -7,10 +7,10 @@ const dbconnect = require("./utils/dbConfig");
 const { PORT } = require("./config/index");
 const socketServer = require("./socketServer");
 const { sessionReminder } = require("./services/sessionServices");
-
+const { CLIENT_URL } = require("./config/index");
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: CLIENT_URL,
   },
 });
 
