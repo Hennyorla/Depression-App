@@ -15,13 +15,15 @@ const Footer = () => {
                   <div class="about-widget">
                     <a class="footer-logo" href="index.html">
                       <img
-                        src={require("../Assets/logo-dark.png")}
+                        src={require("../Assets/logo.png")}
                         alt="Logo"
+                        style={{ height: "50px" }}
                       />
                     </a>
                     <p class="mb-0">
-                      Sed elit quam, iaculis sed semper sit amet udin vitae nibh
-                      at magna akal semperFusce.
+                      We are committed to delivering personalized treatment
+                      plans that address the unique needs of each client,
+                      fostering resilience, healing, and personal growth
                     </p>
                     <ul class="widget-contact-info">
                       <li class="info-address">
@@ -88,14 +90,14 @@ const Footer = () => {
                     <ul class="posts-item">
                       <li>
                         <a href="blog-details.html">
-                          <i class="icon icofont-rounded-double-right"></i>Lorem
-                          Ispum dolor sit amet putilor
+                          <i class="icon icofont-rounded-double-right"></i>Tips
+                          for Managing Stress in Daily Life
                         </a>
                       </li>
                       <li>
                         <a href="blog-details.html">
                           <i class="icon icofont-rounded-double-right"></i>
-                          Medical is all about quality.
+                          Mental Health is all about quality.
                         </a>
                       </li>
                       <li>

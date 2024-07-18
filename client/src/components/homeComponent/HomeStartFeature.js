@@ -10,9 +10,9 @@ const HomeStartFeature = () => {
                 data-aos="fade-up"
                 data-aos-duration="1100"
               >
-                <p>Why Choose hope Medical</p>
+                <p>Why Choose Mood-Lift</p>
                 <h2 className="title">
-                  <span>The Best</span> For Your Health
+                  <span>The Best</span> For Your Mental Health
                 </h2>
               </div>
             </div>
@@ -30,10 +30,11 @@ const HomeStartFeature = () => {
                       <i className="icofont-prescription"></i>
                     </div>
                     <div className="content">
-                      <h5 className="title">Medical Counseling</h5>
+                      <h5 className="title">Mental Health Counseling</h5>
                       <p>
-                        Lorem ipsum dolor sit amet, consect adipisicing elit
-                        vero. Donec ultri sollicitudin lacus
+                        Helping individuals manage and alleviate symptoms of
+                        mental health disorders. Addressing issues early to
+                        prevent them from becoming more severe.
                       </p>
                     </div>
                   </div>
@@ -44,10 +45,12 @@ const HomeStartFeature = () => {
                       <i className="icofont-doctor-alt"></i>
                     </div>
                     <div className="content">
-                      <h5 className="title">Top Level Doctors</h5>
+                      <h5 className="title">Top Level Professionals</h5>
                       <p>
-                        Lorem ipsum dolor sit amet, consect adipisicing elit
-                        vero. Donec ultri sollicitudin lacus
+                        Our team of mental health professionals are highly
+                        trained and experienced in providing mental health
+                        services. They are dedicated to helping individuals
+                        achieve their mental health goals.
                       </p>
                     </div>
                   </div>
@@ -58,10 +61,11 @@ const HomeStartFeature = () => {
                       <i className="icofont-microscope"></i>
                     </div>
                     <div className="content">
-                      <h5 className="title">Medical Facilites</h5>
+                      <h5 className="title">Mental Health Facilites</h5>
                       <p>
-                        Lorem ipsum dolor sit amet, consect adipisicing elit
-                        vero. Donec ultri sollicitudin lacus
+                        Our mental health facilities are equipped with the
+                        latest technology and resources to provide the best
+                        possible care for our clients.
                       </p>
                     </div>
                   </div>
@@ -74,8 +78,9 @@ const HomeStartFeature = () => {
                     <div className="content">
                       <h5 className="title">24 Hours Services</h5>
                       <p>
-                        Lorem ipsum dolor sit amet, consect adipisicing elit
-                        vero. Donec ultri sollicitudin lacus
+                        We offer 24-hour mental health services to ensure that
+                        our clients have access to the care they need when they
+                        need it.
                       </p>
                     </div>
                   </div>
@@ -88,8 +93,10 @@ const HomeStartFeature = () => {
                     <div className="content">
                       <h5 className="title">Personal Services</h5>
                       <p>
-                        Lorem ipsum dolor sit amet, consect adipisicing elit
-                        vero. Donec ultri sollicitudin lacus
+                        We provide personalized mental health services to meet
+                        the unique needs of each individual. Our team of mental
+                        health professionals are dedicated to helping
+                        individuals achieve their mental health goals.
                       </p>
                     </div>
                   </div>
@@ -100,10 +107,12 @@ const HomeStartFeature = () => {
                       <i className="icofont-paralysis-disability"></i>
                     </div>
                     <div className="content">
-                      <h5 className="title">Dedicated Patient Care</h5>
+                      <h5 className="title">Dedicated Mental Health Care</h5>
                       <p>
-                        Lorem ipsum dolor sit amet, consect adipisicing elit
-                        vero. Donec ultri sollicitudin lacus
+                        We are dedicated to providing the best possible care for
+                        our clients. Our team of mental health professionals are
+                        committed to helping individuals achieve their mental
+                        health goals.
                       </p>
                     </div>
                   </div>

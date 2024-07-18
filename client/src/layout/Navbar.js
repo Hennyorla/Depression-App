@@ -37,9 +37,28 @@ const NavBar = () => {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
           <ul className="navbar-nav  mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <NavLink className="nav-link active" aria-current="page" to="/">
                 Home
-              </a>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
+                to="/about"
+              >
+                About Us
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink
+                className="nav-link active"
+                aria-current="page"
+                to="/services"
+              >
+                Services
+              </NavLink>
             </li>
             {!user && (
               <li className="nav-item">

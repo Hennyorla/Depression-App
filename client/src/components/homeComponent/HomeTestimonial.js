@@ -37,19 +37,18 @@ const HomeTestimonial = () => {
                     </div>
                     <div className="client-content">
                       <p>
-                        “It’s been an absolute pleasure to work with hope,
+                        “It’s been an absolute pleasure to work with{" "}
+                        <span>Mood-Lift</span>,
                         <br />
                         their response to our brief exceeded expectations and
                         the execution was efficient, professional and very
-                        reassuring. I’d fully recommend theme.”
+                        reassuring. I’d fully recommend them.”
                       </p>
                     </div>
                     <div className="client-info">
                       <div className="desc">
-                        <h4 className="name">Steven Gerrard</h4>
-                        <p className="client-location">
-                          Golden Lotus Apartment, Brooklyn, USA
-                        </p>
+                        <h4 className="name">Babatunde Raji</h4>
+                        <p className="client-location">Lagos, Nigeria</p>
                       </div>
                     </div>
                   </div>

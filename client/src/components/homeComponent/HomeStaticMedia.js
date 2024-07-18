@@ -18,7 +18,7 @@ const HomeStaticMedia = () => {
             <div className="media">
               <div className="media-body">
                 <h4 className="title">Treatment</h4>
-                <p>Treatment of the disease</p>
+                <p>Treatment of Mental Health</p>
               </div>
               <span className="icon icofont-brain-alt"></span>
             </div>

@@ -135,11 +135,9 @@ const HomeBlogs = () => {
                       data-bs-parent="#accordionStyle"
                     >
                       <div class="accordion-body">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Curabitur consectetur elit lacinia ornare. In volutpat
-                        rutrum molestie. Vivamus efficitur orci, ac gravida eros
-                        bibendum non. Nullam auctor varius fer vestibulum ante
-                        ipsum primis in faucibus orci luctus et ultrices.
+                        Yes, it is possible to get a divorce without a
+                        consultant, such as a lawyer or mediator, though the
+                        process can be more challenging.
                       </div>
                     </div>
                   </div>
@@ -166,11 +164,9 @@ const HomeBlogs = () => {
                       data-bs-parent="#accordionStyle"
                     >
                       <div class="accordion-body">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Curabitur consectetur elit lacinia ornare. In volutpat
-                        rutrum molestie. Vivamus efficitur orci, ac gravida eros
-                        bibendum non. Nullam auctor varius fer vestibulum ante
-                        ipsum primis in faucibus orci luctus et ultrices.
+                        For technical problems or support issues, you should
+                        typically email the support team of the service or
+                        product you are having issues with.
                       </div>
                     </div>
                   </div>
@@ -184,7 +180,8 @@ const HomeBlogs = () => {
                         aria-expanded="false"
                         aria-controls="collapseThree"
                       >
-                        What Other Services Are You Compatible With?
+                        What technologies are commonly used to develop mental
+                        health apps?
                         <i class="icon icon-plus icofont-thin-down"></i>
                         <i class="icon icon-minus icofont-close-line"></i>
                       </button>
@@ -196,11 +193,13 @@ const HomeBlogs = () => {
                       data-bs-parent="#accordionStyle"
                     >
                       <div class="accordion-body">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Curabitur consectetur elit lacinia ornare. In volutpat
-                        rutrum molestie. Vivamus efficitur orci, ac gravida eros
-                        bibendum non. Nullam auctor varius fer vestibulum ante
-                        ipsum primis in faucibus orci luctus et ultrices.
+                        Common technologies used include: Frontend: React.js
+                        (for web), React Native (for mobile), HTML/CSS. Backend:
+                        Node.js, Express.js, MongoDB (MERN stack), Firebase.
+                        Data Security: Encryption protocols, secure APIs.
+                        Additional Integrations: AI chatbots, real-time
+                        communication (WebRTC), cloud services (AWS, Google
+                        Cloud).
                       </div>
                     </div>
                   </div>
@@ -226,18 +225,21 @@ const HomeBlogs = () => {
                       data-bs-parent="#accordionStyle"
                     >
                       <div class="accordion-body">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Curabitur consectetur elit lacinia ornare. In volutpat
-                        rutrum molestie. Vivamus efficitur orci, ac gravida eros
-                        bibendum non. Nullam auctor varius fer vestibulum ante
-                        ipsum primis in faucibus orci luctus et ultrices.
+                        No,but If you're looking for job opportunities, here are
+                        some steps and resources you can consider: Job Search
+                        Engines: Use popular job search engines like Indeed,
+                        LinkedIn, Glassdoor, and Monster to look for job
+                        openings in your field. Company Websites: Visit the
+                        career sections of companies you're interested in. Many
+                        companies post job openings directly on their websites.
+                        Networking: Leverage your professional network,
+                        including LinkedIn connections and local networking
+                        events. Networking can often lead to hidden job
+                        opportunities.
                       </div>
                     </div>
                   </div>
                 </div>
-                <a class="btn-line" href="#/">
-                  View All Questions
-                </a>
               </div>
             </div>
           </div>

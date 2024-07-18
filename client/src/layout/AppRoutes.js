@@ -6,6 +6,7 @@ import HomePage from "../pages/HomePage";
 import BlogsPage from "../pages/BlogsPage";
 import AboutPage from "../pages/AboutPage";
 // import AdminPage from "../pages/AdminPage";
+import ServicesPage from "../pages/ServicesPage";
 import ProfApplyPage from "../pages/ProfApplyPage";
 import ChatPage from "../pages/ChatPage";
 import ProfilePage from "../pages/ProfilePage";
@@ -38,6 +39,7 @@ const AppRoutes = () => {
       <Route path="/home" element={<HomePage />} />
       <Route path="/blogs" element={<BlogsPage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/services" element={<ServicesPage />} />
 
       <Route
         path="/chat"

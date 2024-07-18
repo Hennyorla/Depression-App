@@ -1,5 +1,6 @@
+import About from "../components/aboutComponent/About";
 const AboutPages = () => {
-  return <h1>This is about page</h1>;
+  return <About />;
 };
 
 export default AboutPages;

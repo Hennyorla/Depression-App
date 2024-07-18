@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import slideImage1 from "../../Assets/slider/slide1.jpg";
-import slideImage2 from "../../Assets/slider/slide2.jpg";
 
 import classes from "./Home.module.css";
 
@@ -23,7 +22,7 @@ const Hero = () => {
               <div class="slider-content">
                 <p class="text animated delay1">feel the difference with us</p>
                 <h2 class="title animated delay2">
-                  Your Health <span>Is</span>
+                  Your Mental Health <span>Is</span>
                   <span class="d-block">Our Priority</span>
                 </h2>
                 <Link
@@ -50,7 +49,7 @@ const Hero = () => {
               <div class="slider-content">
                 <p class="text animated delay1">feel the difference with us</p>
                 <h2 class="title animated delay2">
-                  Your Health <span>Is</span>
+                  Your Mental Health <span>Is</span>
                   <span class="d-block">Our Priority</span>
                 </h2>
                 <Link
@@ -60,7 +59,7 @@ const Hero = () => {
                   Book An Appointment
                 </Link>
                 <Link
-                  to="/about-us"
+                  to="/about"
                   class="btn btn-outline-secondary animated delay2"
                 >
                   Read About Us

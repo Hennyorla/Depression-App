@@ -11,7 +11,7 @@ const HomeAppointmentForm = () => {
               data-aos="fade-up"
               data-aos-duration="1000"
             >
-              <p>Meet Our Docots</p>
+              <p>Meet Our Professsionals</p>
               <h2 className="title">
                 <span>Professional &</span> Enthusiastic
               </h2>
@@ -31,10 +31,15 @@ const HomeAppointmentForm = () => {
               <div className="member-info">
                 <h4 className="name">Dr. Helen Willmore</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  ut sapi euismod, auctor orci ut.
+                  Dr. Willmore believes in a holistic approach to mental health.
+                  She combines Cognitive Behavioral Therapy (CBT) with
+                  mindfulness and stress management techniques to help her
+                  clients achieve their mental health goals. Her sessions are
+                  client-centered, focusing on empowering individuals with the
+                  skills and knowledge they need to manage their mental health
+                  effectively.
                 </p>
-                <Link to="#/" className="btn-link">
+                <Link to="/professional" className="btn-link">
                   Read More
                 </Link>
               </div>
@@ -52,10 +57,14 @@ const HomeAppointmentForm = () => {
               <div className="member-info">
                 <h4 className="name">Dr. Robert David</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  ut sapi euismod, auctor orci ut.
+                  Dr. David believes in a holistic approach to mental health. He
+                  combines Cognitive Behavioral Therapy (CBT) with mindfulness
+                  and stress management techniques to help his clients achieve
+                  their mental health goals. His sessions are client-centered,
+                  focusing on empowering individuals with the skills and
+                  knowledge they need to manage their mental health effectively.
                 </p>
-                <a href="#/" className="btn-link">
+                <a href="/professional" className="btn-link">
                   Read More
                 </a>
               </div>
@@ -73,10 +82,15 @@ const HomeAppointmentForm = () => {
               <div className="member-info">
                 <h4 className="name">Dr. Kristina Castle</h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  ut sapi euismod, auctor orci ut.
+                  Dr. Castle believes in a holistic approach to mental health.
+                  She combines Cognitive Behavioral Therapy (CBT) with
+                  mindfulness and stress management techniques to help her
+                  clients achieve their mental health goals. Her sessions are
+                  client-centered, focusing on empowering individuals with the
+                  skills and knowledge they need to manage their mental health
+                  effectively.
                 </p>
-                <a href="#/" className="btn-link">
+                <a href="professional/" className="btn-link">
                   Read More
                 </a>
               </div>
