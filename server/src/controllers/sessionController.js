@@ -5,7 +5,7 @@ const { generateMessaegeId } = require("../utils/session");
 
 const createSession = async (req, res) => {
   const { userId } = req.user;
-  const { professionalId, sessionDate } = req.body;
+  const { professionalId, sessionDate, note } = req.body;
 
   const month = String(new Date(sessionDate).getMonth() + 1).padStart(2, "0");
   const day = String(new Date(sessionDate).getDate()).padStart(2, "0");
@@ -31,6 +31,7 @@ const createSession = async (req, res) => {
     const sessionData = {
       user: userId,
       professional: professionalId,
+      note,
       day,
       month,
       sessionDate,

@@ -2,44 +2,67 @@ const Professional = require("../models/professionalModel");
 const ProfessionalApplication = require("../models/profAppModel");
 const { findUserById } = require("../services/userServices");
 
-const apply = async ({ professionalData }) => {
-  const professionalApplication = new ProfessionalApplication(professionalData);
-  await professionalApplication.save();
-  return professionalApplication;
+const apply = async (professionalData) => {
+  const applicationalAlreadyExists = await ProfessionalApplication.findOne({
+    user: professionalData.user,
+  });
+  if (!applicationalAlreadyExists) {
+    const professionalApplication = new ProfessionalApplication(
+      professionalData
+    );
+    await professionalApplication.save();
+    return professionalApplication;
+  }
+
+  throw new Error("you already applied");
+};
+
+const allApplications = async () => {
+  return await ProfessionalApplication.find({})
+    .populate("user", "firstName lastName email profilePicture")
+    .exec();
 };
 
 const createProfessional = async (userId) => {
-  const user = await findUserById(userId);
+  const user = await ProfessionalApplication.findOne({ user: userId });
+  const userInfo = await findUserById(userId);
 
-  const professionData = {
-    user: user._id,
-  };
+  if (user) {
+    const professionalData = {
+      user: userId,
+      cv: user.cv,
+      experience: user.experience,
+      specialties: user?.specialties,
+      summary: user?.summary,
+    };
 
-  const professional = new Professional(professionalData);
-  await professional.save();
-  return professional;
+    const professional = new Professional(professionalData);
+    await professional.save();
+
+    userInfo.role = "professional";
+    userInfo.save();
+
+    await ProfessionalApplication.deleteOne({
+      user: userInfo._id.toString(),
+    });
+    return professional;
+  }
 };
 
 const getProfessional = async (professionalId) => {
   const professional = await Professional.findById(professionalId)
-    .populate("user", "name email")
+    .populate("user", "firstName lastName email profilePicture")
     .populate("sessions")
     .exec();
   return professional;
 };
 
-const getProfessionals = async (filters) => {
-  const query = {};
-  if (filters.specialties) {
-    query.specialties = { $in: filters.specialties.split(",") };
-  }
-  if (filters.availability) {
-    query.availability = filters.availability;
-  }
-  const professionals = await Professional.find(query).populate(
-    "user",
-    "name email"
-  );
+const getProfessionals = async () => {
+  const professionals = await Professional.find({})
+    .populate("user", "firstName lastName email profilePicture")
+    .exec();
+
+  console.log(professionals);
   return professionals;
 };
 
@@ -63,5 +86,6 @@ module.exports = {
   getProfessionals,
   updateProfessional,
   deleteProfessional,
+  allApplications,
   apply,
 };

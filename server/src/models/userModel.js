@@ -36,17 +36,26 @@ const userSchema = new Schema(
       required: true,
     },
 
+    dob: {
+      type: Date,
+      required: true,
+    },
+
     verificationToken: {
+      type: String,
+    },
+
+    profilePicture: {
       type: String,
     },
 
     symptoms: [String],
 
-    session: { type: Schema.Types.ObjectId, ref: "Session" },
+    session: { type: Schema.Types.ObjectId, ref: "session" },
   },
   { timestamps: true }
 );
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("user", userSchema);
 
 module.exports = User;

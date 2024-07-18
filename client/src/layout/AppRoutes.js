@@ -1,8 +1,12 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useGetCurrentUserMutation } from "../lib/APIS/userApis/userApi";
 import HomePage from "../pages/HomePage";
 import BlogsPage from "../pages/BlogsPage";
 import AboutPage from "../pages/AboutPage";
-import AdminPage from "../pages/AdminPage";
+// import AdminPage from "../pages/AdminPage";
+import ProfApplyPage from "../pages/ProfApplyPage";
 import ChatPage from "../pages/ChatPage";
 import ProfilePage from "../pages/ProfilePage";
 import AuthPage from "../pages/AuthPage";
@@ -10,22 +14,65 @@ import SelfAssessment from "../pages/SelfAssessmentPage";
 import SignupComponent from "../components/authComponent/SignupComponent";
 import SigninComponent from "../components/authComponent/SigninComponent";
 import VerificationComponent from "../components/authComponent/VerificationComponent";
+import UpdatePassword from "../components/authComponent/UpdatePassword";
+import Error404 from "../components/errorComponents/Error404";
+import { ProtectedRoutes } from "./ProtectedRoute";
+import { GeneralRoutes } from "./GeneralRoutes";
 
 const AppRoutes = () => {
+  const [getCurrentUser] = useGetCurrentUserMutation();
+  const { user } = useSelector((state) => state.userState);
+
+  const location = useLocation();
+
+  const { pathname } = location;
+
+  useEffect(() => {
+    getCurrentUser();
+  }, [pathname]);
+
   return (
     <Routes>
+      <Route path="*" element={<Error404 />} />
       <Route path="/" element={<Navigate to="/home" replace={true} />} exact />
       <Route path="/home" element={<HomePage />} />
       <Route path="/blogs" element={<BlogsPage />} />
       <Route path="/about" element={<AboutPage />} />
-      <Route path="/admin" element={<AdminPage />} />
-      <Route path="/chat" element={<ChatPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
+
+      <Route
+        path="/chat"
+        element={<ProtectedRoutes user={user} children={<ChatPage />} />}
+      />
+      <Route
+        path="/profile"
+        element={<ProtectedRoutes user={user} children={<ProfilePage />} />}
+      />
       <Route path="/self-assessment" element={<SelfAssessment />} />
-      <Route path="/get-started" element={<AuthPage />}>
-        <Route path="signup" element={<SignupComponent />} />
-        <Route path="signin" element={<SigninComponent />} />
-        <Route path="verify" element={<VerificationComponent />} />
+
+      <Route path="/professional-application" element={<ProfApplyPage />} />
+
+      <Route
+        path="/get-started"
+        element={<GeneralRoutes user={user} children={<AuthPage />} />}
+      >
+        <Route
+          path="signup"
+          element={<GeneralRoutes user={user} children={<SignupComponent />} />}
+        />
+        <Route
+          path="signin"
+          element={<GeneralRoutes user={user} children={<SigninComponent />} />}
+        />
+        <Route
+          path="verify"
+          element={
+            <GeneralRoutes user={user} children={<VerificationComponent />} />
+          }
+        />
+        <Route
+          path="set-password"
+          element={<GeneralRoutes user={user} children={<UpdatePassword />} />}
+        />
       </Route>
     </Routes>
   );

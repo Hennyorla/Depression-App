@@ -1,0 +1,19 @@
+.error_404 {
+  margin-top: 150px;
+  margin-bottom: 70px;
+}
+
+.error_page h1 {
+  font-size: 8em;
+}
+
+.error_page p {
+  color: #8f1b1b;
+  font-weight: 700;
+  margin-bottom: 70px;
+}
+
+.error_page a {
+  font-weight: 700;
+  color: #8f1b1b;
+}

@@ -11,7 +11,7 @@ const { hashPassword } = require("../utils/passwordHelpers");
 const createNewUser = async (req, res) => {
   try {
     // pull out new user data from req.body
-    const { firstName, lastName, gender, email } = req.body;
+    const { firstName, lastName, gender, email, dob } = req.body;
 
     const userExist = await findUserByEmail(email);
 
@@ -43,6 +43,7 @@ const createNewUser = async (req, res) => {
       email,
       verificationToken,
       gender,
+      dob,
     });
 
     // use the mongoose .save method to save user data in database

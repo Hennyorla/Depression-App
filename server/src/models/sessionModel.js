@@ -7,7 +7,7 @@ const sessionSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "user",
       required: true,
     },
     professional: {
@@ -25,7 +25,7 @@ const sessionSchema = new Schema(
       required: true,
     },
     day: { type: Number, required: true },
-    notes: String,
+    note: String,
     messageId: {
       type: String,
       required: true,
@@ -39,6 +39,6 @@ const sessionSchema = new Schema(
   { timestamps: true }
 );
 
-const Session = mongoose.model("Session", sessionSchema);
+const Session = mongoose.model("session", sessionSchema);
 
 module.exports = Session;

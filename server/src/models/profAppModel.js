@@ -7,18 +7,24 @@ const profAppSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "user",
       required: true,
     },
-    qualifications: [String],
+    cv: {
+      type: String,
+    },
     experience: Number, // Number of years
-    specialties: [String],
+    specialties: String,
+    summary: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
 const ProfessionalApplication = mongoose.model(
-  "ProfessionalApp",
+  "professionalApp",
   profAppSchema
 );
 

@@ -1,6 +1,32 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import ErrorMessage from "../UI/ErrorMessage";
+import { useVerifyUserMutation } from "../../lib/APIS/authApis/authApis";
 
 const VerificationComponent = () => {
+  const [verificationToken, setVerificationToken] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
+
+  const [verifyUser, { isSuccess, isLoading, isError, error }] =
+    useVerifyUserMutation();
+
+  const verifyUserHandler = async (event) => {
+    event.preventDefault();
+    if (!verificationToken) {
+      return setErrorMessage("provide verification Token");
+    }
+    await verifyUser({ verificationToken });
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      localStorage.setItem("a_t", verificationToken);
+      navigate("/get-started/set-password");
+    }
+  }, [isSuccess]);
+
   return (
     <section className="appointment-area" data-bg-color="#f3f3f3">
       <div className="appointment-form-style1">
@@ -12,13 +38,19 @@ const VerificationComponent = () => {
                   <h2 className="title">
                     <span>We are</span> Always Ready to Help you
                   </h2>
+
+                  <p>Verify account with otp to continue</p>
                 </div>
-                <form>
+                {errorMessage && <ErrorMessage message={errorMessage} />}
+                {isError && <ErrorMessage message={error?.data?.error} />}
+                <form onSubmit={verifyUserHandler}>
                   <div className="form-group">
                     <input
                       className="form-control"
                       type="text"
                       placeholder="Enter OTP"
+                      value={verificationToken}
+                      onChange={(e) => setVerificationToken(e.target.value)}
                     />
                   </div>
 
@@ -28,7 +60,7 @@ const VerificationComponent = () => {
                       type="submit"
                       style={{ width: "100%" }}
                     >
-                      Verify Account
+                      {isLoading ? "Please wait..." : " Verify Account"}
                     </button>
                   </div>
                 </form>

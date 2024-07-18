@@ -182,7 +182,8 @@ const SelfAssessmentForm = () => {
                   </button>
 
                   <p>
-                    Are you a professional ? <Link to="/profile">Skip</Link>
+                    Are you a professional ?{" "}
+                    <Link to="/professional-application">Skip</Link>
                   </p>
                 </div>
               </div>

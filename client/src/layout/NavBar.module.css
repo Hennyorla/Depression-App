@@ -1,3 +1,9 @@
 .mousePoint {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+.profile_image {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
 }

@@ -15,10 +15,6 @@ const checkUserData = async (req, res, next) => {
 const checkPasswordValidity = async (req, res, next) => {
   const { password, confirmPassword } = req.body;
 
-  if (!password || !confirmPassword) {
-    return res.status(403).json({ error: "all input fields are required" });
-  }
-
   if (password !== confirmPassword) {
     return res.status(403).json({ error: "password does not match" });
   }
@@ -55,6 +51,10 @@ const checkPasswordValidity = async (req, res, next) => {
     return res
       .status(403)
       .json({ error: "password must include a special character" });
+  }
+
+  if (!password || !confirmPassword) {
+    return res.status(403).json({ error: "all input fields are required" });
   }
 
   next();

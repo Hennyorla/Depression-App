@@ -7,22 +7,23 @@ const professionalSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "user",
       required: true,
     },
-    qualifications: [String],
+    cv: String,
     experience: Number, // Number of years
-    specialties: [String],
+    specialties: String,
+    summary: String,
     availability: {
       type: String,
       enum: ["available", "unavailable"],
       default: "available",
     },
-    sessions: [{ type: Schema.Types.ObjectId, ref: "Session" }],
+    sessions: [{ type: Schema.Types.ObjectId, ref: "session" }],
   },
   { timestamps: true }
 );
 
-const Professional = mongoose.model("Professional", professionalSchema);
+const Professional = mongoose.model("professional", professionalSchema);
 
 module.exports = Professional;

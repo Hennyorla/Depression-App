@@ -1,11 +1,20 @@
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useLogoutUserMutation } from "../lib/APIS/authApis/authApis";
 import classes from "./NavBar.module.css";
 
 const NavBar = () => {
+  const { user } = useSelector((state) => state.userState);
+
+  const [logoutUser] = useLogoutUserMutation();
+
+  const onLogoutUser = async () => {
+    await logoutUser();
+  };
   return (
     <nav className="navbar navbar-expand-md" data-bs-theme="dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="/">
           <img
             className="sticky-img"
             src={require("../Assets/logo.png")}
@@ -32,14 +41,50 @@ const NavBar = () => {
                 Home
               </a>
             </li>
-            <li className="nav-item">
-              <NavLink
-                className={`nav-link ${classes.appointment}`}
-                to="/get-started/signin"
-              >
-                BOOK AN APPOINTMENT
-              </NavLink>
-            </li>
+            {!user && (
+              <li className="nav-item">
+                <NavLink
+                  className={`nav-link ${classes.appointment}`}
+                  to="/get-started/signin"
+                >
+                  BOOK AN APPOINTMENT
+                </NavLink>
+              </li>
+            )}
+
+            {user && (
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <img
+                    src={require("../Assets/dummyimage.jpeg")}
+                    alt="profile_image"
+                    className={classes.profile_image}
+                  />
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <NavLink class="dropdown-item" to="/profile">
+                      My Profile
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      class="dropdown-item"
+                      href="#"
+                      onClick={logoutUser}
+                    >
+                      Logout
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+            )}
           </ul>
         </div>
       </div>

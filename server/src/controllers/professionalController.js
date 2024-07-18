@@ -1,14 +1,17 @@
 const professionalService = require("../services/professionalServices");
-const { apply } = require("../services/professionalServices");
+const { apply, allApplications } = require("../services/professionalServices");
+
 const applyForProffessional = async (req, res) => {
   const { userId } = req.user;
+  const cv = "uploads/" + req.file.filename;
+  const { specialities, experience, summary } = req.body;
   try {
-    const { qualifications, specialities, experience } = req.body;
     const professionalData = {
       user: userId,
-      qualifications,
+      cv,
       specialities,
       experience,
+      summary,
     };
     const application = await apply(professionalData);
 
@@ -23,11 +26,21 @@ const applyForProffessional = async (req, res) => {
   }
 };
 
+const getProfessionalApplications = async (req, res) => {
+  try {
+    const applications = await allApplications();
+
+    return res.status(200).json(applications);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 const createProfessional = async (req, res) => {
-  const { userId } = req.params;
+  const { id } = req.params;
 
   try {
-    const professional = await professionalService.createProfessional(userId);
+    const professional = await professionalService.createProfessional(id);
     res
       .status(201)
       .json({ message: "professional created successfully", professional });
@@ -95,4 +108,5 @@ module.exports = {
   updateProfessional,
   deleteProfessional,
   applyForProffessional,
+  getProfessionalApplications,
 };

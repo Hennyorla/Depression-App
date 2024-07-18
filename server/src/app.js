@@ -12,8 +12,9 @@ const app = express();
 //global middleware configuration
 
 const corsOptions = {
-  origin: ["https://localhost:3000"],
+  origin: ["http://localhost:3000"],
   optionsSuccessStatus: 200,
+  credentials: true,
 };
 
 //globalmiddleware configuration for cookie-parser
@@ -26,20 +27,20 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // global middleware configuration for sanitizing user input
-app.use(
-  sanitizer.clean({
-    xss: true,
-    noSql: true,
-    sql: true,
-  })
-);
+// app.use(
+//   sanitizer.clean({
+//     xss: true,
+//     noSql: true,
+//     sql: true,
+//   })
+// );
 
 //router configuration as a global middleware
 app.use("/users", userRoutes);
 app.use("/auth", authRoutes);
-app.use("/professional", professionalRoute);
-app.use("/session", sessionRoutes);
-app.use("/resource", resourceRoutes);
+app.use("/professionals", professionalRoute);
+app.use("/sessions", sessionRoutes);
+app.use("/resources", resourceRoutes);
 
 //root route
 app.get("/", (req, res) => {

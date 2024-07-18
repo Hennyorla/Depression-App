@@ -1,6 +1,30 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useLoginUserMutation } from "../../lib/APIS/authApis/authApis";
+import ErrorMessage from "../UI/ErrorMessage";
 
 const SigninComponent = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const [loginUser, { isLoading, isError, error, isSuccess, data }] =
+    useLoginUserMutation();
+
+  const loginUserHandler = async (event) => {
+    event.preventDefault();
+
+    await loginUser({ email, password });
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      localStorage.setItem("r_t", data?.refreshToken);
+      navigate("/self-assessment");
+    }
+  }, [isSuccess]);
+
   return (
     <section className="appointment-area" data-bg-color="#f3f3f3">
       <div className="appointment-form-style1">
@@ -13,13 +37,25 @@ const SigninComponent = () => {
                     <span>We are</span> Always Ready to Help you
                   </h2>
                   <p>Sign in to book an Appointment</p>
+
+                  {isError && (
+                    <ErrorMessage
+                      message={
+                        error?.data?.error ||
+                        error?.error ||
+                        "something went wrong"
+                      }
+                    />
+                  )}
                 </div>
-                <form>
+                <form onSubmit={loginUserHandler}>
                   <div className="form-group">
                     <input
                       className="form-control"
-                      type="email"
+                      type="text"
                       placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
 
@@ -29,6 +65,8 @@ const SigninComponent = () => {
                       type="password"
                       name="con_email"
                       placeholder="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
 
@@ -38,7 +76,7 @@ const SigninComponent = () => {
                       type="submit"
                       style={{ width: "100%" }}
                     >
-                      Login
+                      {isLoading ? "Please wait... " : "Login"}
                     </button>
                   </div>
                 </form>

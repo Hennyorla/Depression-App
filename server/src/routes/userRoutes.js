@@ -14,10 +14,10 @@ const {
   checkIsTokenValid,
 } = require("../middlewares/dataValidator");
 
+router.get("/me", requireSignin, getCurrentUser);
 router.post("/", checkUserData, createNewUser);
 router.put("/verify", checkIsTokenValid, verifyUser);
 router.put("/symptoms", requireSignin, selectSymptoms);
 router.put("/update-password", checkPasswordValidity, createNewPassword);
-router.get("/me", requireSignin, getCurrentUser);
 
 module.exports = router;

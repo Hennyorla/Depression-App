@@ -13,16 +13,29 @@ const createSession = async (sessionData) => {
 
 const getSession = async (sessionId) => {
   const session = await Session.findById(sessionId)
-    .populate("user")
-    .populate("professional")
+    .populate("user", "firstName lastName email profilePicture")
+    .populate({
+      path: "profesional",
+      populate: {
+        path: "user",
+        select: "_id email firstName lastName profilePicture",
+      },
+    })
     .exec();
   return session;
 };
 
 const getSessions = async () => {
-  const sessions = await Session.find(query)
-    .populate("user", "name email")
-    .populate("professional", "name");
+  const sessions = await Session.find({})
+    .populate("user", "firstName lastName email profilePicture")
+    .populate({
+      path: "profesional",
+      populate: {
+        path: "user",
+        select: "_id email firstName lastName profilePicture",
+      },
+    })
+    .exec();
   return sessions;
 };
 
@@ -43,10 +56,10 @@ const sessionReminder = async () => {
   const day = String(new Date().getDate()).padStart(2, "0");
   // Find sessions within the  current month and day
   const sessions = await Session.find({ month, day: { $eq: day } })
-    .populate("User", "email firstName lastName")
+    .populate("user", "email firstName lastName")
     .populate({
-      path: "Professional",
-      populate: { path: "User", select: "email firstName lastName" },
+      path: "professional",
+      populate: { path: "user", select: "email firstName lastName" },
     })
     .exec();
 
