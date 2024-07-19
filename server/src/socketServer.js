@@ -5,7 +5,7 @@ const {
   getRoomUsers,
 } = require("./utils/chathelpers");
 const messageFormat = require("./utils/messageFormat");
-const runConversation = require("./utils/gpt");
+const runConversation = require("./utils/geminiApi");
 const { profanityFilter } = require("./utils/profanityFilter");
 
 const listen = async (io) => {
