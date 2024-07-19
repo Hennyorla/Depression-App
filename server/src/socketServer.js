@@ -9,7 +9,7 @@ const runConversation = require("./utils/geminiApi");
 const { profanityFilter } = require("./utils/profanityFilter");
 
 const listen = async (io) => {
-  const bot = "T-robotics";
+  const bot = "Moodlift AI";
 
   // Run when client connects
   io.on("connection", (socket) => {
