@@ -21,7 +21,9 @@ const SigninComponent = () => {
   useEffect(() => {
     if (isSuccess) {
       localStorage.setItem("r_t", data?.refreshToken);
-      navigate("/self-assessment");
+      setTimeout(() => {
+        navigate("/self-assessment");
+      }, 500);
     }
   }, [isSuccess]);
 

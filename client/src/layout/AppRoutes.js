@@ -41,10 +41,37 @@ const AppRoutes = () => {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/services" element={<ServicesPage />} />
 
-      {/* <Route
-        path="/session/chat-ai"
-        element={<ProtectedRoutes user={user} children={<ChatPage />} />}
-      /> */}
+      {!user && (
+        <Route
+          path="/get-started"
+          element={<GeneralRoutes user={user} children={<AuthPage />} />}
+        >
+          <Route
+            path="signup"
+            element={
+              <GeneralRoutes user={user} children={<SignupComponent />} />
+            }
+          />
+          <Route
+            path="signin"
+            element={
+              <GeneralRoutes user={user} children={<SigninComponent />} />
+            }
+          />
+          <Route
+            path="verify"
+            element={
+              <GeneralRoutes user={user} children={<VerificationComponent />} />
+            }
+          />
+          <Route
+            path="set-password"
+            element={
+              <GeneralRoutes user={user} children={<UpdatePassword />} />
+            }
+          />
+        </Route>
+      )}
 
       <Route
         path="/session/:sessionId"
@@ -54,33 +81,15 @@ const AppRoutes = () => {
         path="/profile"
         element={<ProtectedRoutes user={user} children={<ProfilePage />} />}
       />
-      <Route path="/self-assessment" element={<SelfAssessment />} />
-
-      <Route path="/professional-application" element={<ProfApplyPage />} />
+      <Route
+        path="/self-assessment"
+        element={<ProtectedRoutes user={user} children={<SelfAssessment />} />}
+      />
 
       <Route
-        path="/get-started"
-        element={<GeneralRoutes user={user} children={<AuthPage />} />}
-      >
-        <Route
-          path="signup"
-          element={<GeneralRoutes user={user} children={<SignupComponent />} />}
-        />
-        <Route
-          path="signin"
-          element={<GeneralRoutes user={user} children={<SigninComponent />} />}
-        />
-        <Route
-          path="verify"
-          element={
-            <GeneralRoutes user={user} children={<VerificationComponent />} />
-          }
-        />
-        <Route
-          path="set-password"
-          element={<GeneralRoutes user={user} children={<UpdatePassword />} />}
-        />
-      </Route>
+        path="/professional-application"
+        element={<ProtectedRoutes user={user} children={<ProfApplyPage />} />}
+      />
     </Routes>
   );
 };

@@ -69,8 +69,6 @@ const ApplyProf = () => {
     }
   }, [isSuccess]);
 
-  console.log(error);
-
   return (
     <div className="container" style={{ marginTop: "100px" }}>
       <div className="row">
