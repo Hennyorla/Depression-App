@@ -84,9 +84,8 @@ const SelfAssessmentForm = () => {
                       value={dismissal}
                       onChange={(e) => setDismissal(e.target.value)}
                     >
-                      <option value="">Male</option>
-                      <option value="">Female</option>
-                      <option value="">other</option>
+                      <option value="">Yes</option>
+                      <option value="">No</option>
                     </select>
                   </div>
 
