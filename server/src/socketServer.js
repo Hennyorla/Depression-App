@@ -9,7 +9,7 @@ const runConversation = require("./utils/gpt");
 const { profanityFilter } = require("./utils/profanityFilter");
 
 const listen = async (io) => {
-  const bot = { name: "T-AI" };
+  const bot = "T-robotics";
 
   // Run when client connects
   io.on("connection", (socket) => {
@@ -17,18 +17,29 @@ const listen = async (io) => {
       const user = userJoin(socket.id, userData, room);
       socket.join(user.room);
 
-      // await createNewCount(userData.username);
-
       if (user.room === userData.username) {
         return socket.emit(
           "message",
           messageFormat(
-            bot.name,
-            `Ask general questions to get instant answers... There is limit to numbers of question you are permmitted to ask per day and vulgar words are not permitted`,
+            bot,
+            `Ask general questions to get instant answers... vulgar words are not permitted`,
             undefined,
             "new-msg"
           )
         );
+      } else {
+        // Welcome current user
+        socket.emit(
+          "message",
+          messageFormat(bot, `Welcome to moodlift life chat session`)
+        );
+
+        socket.broadcast
+          .to(user.room)
+          .emit(
+            "message",
+            messageFormat(bot, `${user?.userData.username} is online`)
+          );
       }
     });
 

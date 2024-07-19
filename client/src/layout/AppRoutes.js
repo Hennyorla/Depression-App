@@ -41,8 +41,13 @@ const AppRoutes = () => {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/services" element={<ServicesPage />} />
 
+      {/* <Route
+        path="/session/chat-ai"
+        element={<ProtectedRoutes user={user} children={<ChatPage />} />}
+      /> */}
+
       <Route
-        path="/chat"
+        path="/session/:sessionId"
         element={<ProtectedRoutes user={user} children={<ChatPage />} />}
       />
       <Route

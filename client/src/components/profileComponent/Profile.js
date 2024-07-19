@@ -125,7 +125,7 @@ const Profile = () => {
             )}
           </div>
         </div>
-        <div className={`${classes.profile_content} col-lg-9`}>
+        <div className={`${classes.profile_content} col-lg-9 p-0`}>
           {showProfile && <UserProfile />}
           {showAppointment && <Appointment />}
           {showApplications && <Applications />}

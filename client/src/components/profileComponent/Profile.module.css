@@ -16,3 +16,21 @@
 .profile_content {
   height: 100vh;
 }
+
+.profile_block {
+  background-color: rgb(191, 183, 138);
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: self-end;
+}
+
+.profile_block div {
+  margin-bottom: -100px;
+}
+
+.profile_image {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+}

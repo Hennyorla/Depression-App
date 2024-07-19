@@ -96,7 +96,7 @@ const NavBar = () => {
                     <NavLink
                       class="dropdown-item"
                       href="#"
-                      onClick={logoutUser}
+                      onClick={onLogoutUser}
                     >
                       Logout
                     </NavLink>

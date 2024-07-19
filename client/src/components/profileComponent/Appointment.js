@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { useGetAllSessionsMutation } from "../../lib/APIS/sessionApi/sessionApis";
 
 const Appointment = () => {
   const [getAllSessions, { data, isLoading }] = useGetAllSessionsMutation();
+
+  const { user } = useSelector((state) => state.userState);
 
   useEffect(() => {
     getAllSessions();
@@ -20,11 +23,25 @@ const Appointment = () => {
                   {/* <img src="..." class="card-img-top" alt="..." /> */}
                   <div class="card-body">
                     <h5 class="card-title">
-                      {session?.professional?.user?.firstName}{" "}
-                      {session?.professional?.user?.lastName}
+                      {user?.role === "user"
+                        ? session?.professional?.user?.firstName
+                        : session?.user?.firstName}{" "}
+                      -
+                      {user?.role === "user"
+                        ? session?.professional?.user?.firstName
+                        : session?.user?.lastName}
                     </h5>
-                    <p> {session?.professional?.user?.email}</p>
-                    <p class="card-text">{session?.professional?.summary}</p>
+                    <p>
+                      {" "}
+                      {user?.role === "user"
+                        ? session?.professional?.user?.email
+                        : session?.user?.email}
+                    </p>
+                    <p class="card-text">
+                      {user?.role === "user"
+                        ? user?.rolesession?.professional?.summary
+                        : session?.note}
+                    </p>
                     <Link
                       to={`/session/${session.messageId}`}
                       class="btn btn-primary"
